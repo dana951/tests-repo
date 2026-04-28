@@ -1,0 +1,16 @@
+[project]
+name = "podinfo-e2e-tests"
+version = "0.1.0"
+description = "Standalone API E2E test suite for podinfo."
+requires-python = ">=3.11"
+dependencies = [
+    "pytest>=8.0.0",
+    "requests>=2.32.0",
+]
+
+[tool.pytest.ini_options]
+addopts = "-rA -s -v"
+markers = [
+    "api: hit the API",
+    "smoke: quick to run and check basic, critical functionality",
+]
