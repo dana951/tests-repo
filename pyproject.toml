@@ -12,5 +12,6 @@ dependencies = [
 addopts = "-rA -s -v"
 markers = [
     "api: hit the API",
+    "e2e: full API E2E suite (non-smoke)",
     "smoke: quick to run and check basic, critical functionality",
 ]
