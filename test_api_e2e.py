@@ -19,7 +19,9 @@ import requests
 
 # ── /health ───────────────────────────────────────────────────────────────────
 
+
 @pytest.mark.api
+@pytest.mark.e2e
 def test_health_endpoint(client: requests.Session) -> None:
     response = client.get("/health")
     assert response.status_code == 200
@@ -28,7 +30,9 @@ def test_health_endpoint(client: requests.Session) -> None:
 
 # ── /version ──────────────────────────────────────────────────────────────────
 
+
 @pytest.mark.api
+@pytest.mark.e2e
 def test_version_response_shape(client: requests.Session) -> None:
     """Verify the response contains all expected fields with non-empty values."""
     response = client.get("/version")
@@ -43,6 +47,7 @@ def test_version_response_shape(client: requests.Session) -> None:
 
 
 @pytest.mark.api
+@pytest.mark.e2e
 def test_version_matches_expected(
     client: requests.Session,
     expected_version: str,
@@ -65,7 +70,9 @@ def test_version_matches_expected(
 
 # ── /info ─────────────────────────────────────────────────────────────────────
 
+
 @pytest.mark.api
+@pytest.mark.e2e
 def test_info_response_shape(client: requests.Session) -> None:
     response = client.get("/info")
     assert response.status_code == 200
@@ -78,7 +85,9 @@ def test_info_response_shape(client: requests.Session) -> None:
 
 # ── /echo ─────────────────────────────────────────────────────────────────────
 
+
 @pytest.mark.api
+@pytest.mark.e2e
 @pytest.mark.parametrize(
     ("params", "expected_status", "expected_message"),
     [
@@ -100,5 +109,4 @@ def test_echo_validation_cases(
     data = response.json()
     if expected_status == 200:
         assert data["message"] == expected_message
-
 
